@@ -1,0 +1,30 @@
+USE mydb;
+
+CREATE TABLE alunos (
+	id_aluno INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(155) NOT NULL,
+	idade INT NULL,
+	email VARCHAR(155) NULL UNIQUE
+);
+
+CREATE TABLE professores (
+	id_professor INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(155) NOT NULL
+);
+
+CREATE TABLE materias (
+	id_materia INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(155) NOT NULL,
+	total_horas INT NOT NULL,
+	id_professor_fk INT UNSIGNED,
+	FOREIGN KEY(id_professor_fk) REFERENCES professores(id_professor) ON DELETE SET NULL
+);
+
+CREATE TABLE matriculas (
+	id_matricula INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	data_matricula DATE NOT NULL,
+	id_aluno_fk INT UNSIGNED,
+	id_materia_fk INT UNSIGNED,
+	FOREIGN KEY(id_aluno_fk) REFERENCES alunos(id_aluno) ON DELETE CASCADE,
+	FOREIGN KEY(id_materia_fk) REFERENCES materias(id_materia) ON DELETE CASCADE
+);
