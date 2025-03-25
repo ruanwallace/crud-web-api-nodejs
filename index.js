@@ -13,6 +13,11 @@ app.post('/cadastrar', async (req, res) => {
     res.sendStatus(201);
 })
 
+app.post('/professores', async (req, res) => {
+    await db.addTeacher(req.body);
+    res.sendStatus(201);
+})
+
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
 })

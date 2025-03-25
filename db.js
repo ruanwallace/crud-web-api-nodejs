@@ -7,4 +7,8 @@ const addStudent = async (students) => {
     await connection.query(sql, values);
 }
 
-module.exports = { addStudent };
+const addTeacher = async (teacher) => {
+    await connection.query('INSERT INTO professores (nome) VALUES (?)', teacher.nome);
+}
+
+module.exports = { addStudent, addTeacher };
