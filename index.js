@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/cadastrar', async (req, res) => {
+app.post('/alunos', async (req, res) => {
     await db.addStudent(req.body);
     res.sendStatus(201);
 })
