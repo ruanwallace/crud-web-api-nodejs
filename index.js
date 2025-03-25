@@ -18,6 +18,11 @@ app.post('/professores', async (req, res) => {
     res.sendStatus(201);
 })
 
+app.post('/materias', async (req, res) => {
+    await db.addSubject(req.body);
+    res.sendStatus(201);
+})
+
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
 })

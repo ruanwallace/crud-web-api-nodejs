@@ -11,4 +11,11 @@ const addTeacher = async (teacher) => {
     await connection.query('INSERT INTO professores (nome) VALUES (?)', teacher.nome);
 }
 
-module.exports = { addStudent, addTeacher };
+const addSubject = async (subject) => {
+    const sql = 'INSERT INTO materias (nome, total_horas, id_professor_fk) VALUES (?, ?, ?)';
+    const values = [subject.nome, subject.total_horas, subject.id_professor_fk];
+
+    await connection.query(sql, values);
+}
+
+module.exports = { addStudent, addTeacher, addSubject };
