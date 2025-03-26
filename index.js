@@ -8,6 +8,16 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/alunos', async (req, res) => {
+    const result = await db.getStudents();
+    res.json(result);
+})
+
+app.get('/materias', async (req, res) => {
+    const result = await db.getSubjects();
+    res.json(result);
+})
+
 app.post('/alunos', async (req, res) => {
     await db.addStudent(req.body);
     res.sendStatus(201);

@@ -24,4 +24,14 @@ const addRegistration = async (registration) => {
     await connection.query(sql, values);
 }
 
-module.exports = { addStudent, addTeacher, addSubject, addRegistration };
+const getStudents = async () => {
+    const res = await connection.query('SELECT * FROM alunos');
+    return res[0]
+}
+
+const getSubjects = async () => {
+    const res = await connection.query('SELECT * FROM materias');
+    return res[0];
+}
+
+module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects };
