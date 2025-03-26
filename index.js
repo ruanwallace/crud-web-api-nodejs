@@ -23,6 +23,11 @@ app.post('/materias', async (req, res) => {
     res.sendStatus(201);
 })
 
+app.post('/matriculas', async (req, res) => {
+    await db.addRegistration(req.body);
+    res.sendStatus(201);
+})
+
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
 })

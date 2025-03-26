@@ -18,4 +18,10 @@ const addSubject = async (subject) => {
     await connection.query(sql, values);
 }
 
-module.exports = { addStudent, addTeacher, addSubject };
+const addRegistration = async (registration) => {
+    const sql = 'INSERT INTO matriculas(data_matricula, id_aluno_fk, id_materia_fk) VALUES (?, ?, ?)';
+    const values = [registration.data_matricula, registration.id_aluno_fk, registration.id_materia_fk];
+    await connection.query(sql, values);
+}
+
+module.exports = { addStudent, addTeacher, addSubject, addRegistration };
