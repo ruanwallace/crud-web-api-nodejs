@@ -18,6 +18,11 @@ app.get('/materias', async (req, res) => {
     res.json(result);
 })
 
+app.get('/professores', async (req, res) => {
+    const result = await db.getTeachers();
+    res.json(result);
+})
+
 app.post('/alunos', async (req, res) => {
     await db.addStudent(req.body);
     res.sendStatus(201);
