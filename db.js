@@ -39,4 +39,9 @@ const getTeachers = async () => {
     return res[0];
 }
 
-module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers };
+const getRegistration = async () => {
+    const res = await connection.query('SELECT * FROM matriculas');
+    return res[0];
+}
+
+module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration };
