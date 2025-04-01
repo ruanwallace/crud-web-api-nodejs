@@ -49,4 +49,9 @@ const consultStudent = async (id_student) => {
     return res[0];
 }
 
-module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration, consultStudent };
+const consultTeacher = async (id_teacher) => {
+    const res = await connection.query('SELECT * FROM professores WHERE id_professor=?', [id_teacher]);
+    return res[0];
+}
+
+module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration, consultStudent, consultTeacher };

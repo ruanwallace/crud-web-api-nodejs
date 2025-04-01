@@ -18,6 +18,11 @@ app.get('/alunos/:id', async (req, res) => {
     res.json(result);
 })
 
+app.get('/professores/:id', async (req, res) => {
+    const result = await db.consultTeacher(req.params.id);
+    res.json(result);
+})
+
 app.get('/materias', async (req, res) => {
     const result = await db.getSubjects();
     res.json(result);
