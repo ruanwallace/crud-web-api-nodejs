@@ -13,6 +13,11 @@ app.get('/alunos', async (req, res) => {
     res.json(result);
 })
 
+app.get('/alunos/:id', async (req, res) => {
+    const result = await db.consultStudent(req.params.id);
+    res.json(result);
+})
+
 app.get('/materias', async (req, res) => {
     const result = await db.getSubjects();
     res.json(result);
