@@ -28,6 +28,11 @@ app.get('/materias/:id', async (req, res) => {
     res.json(result);
 })
 
+app.get('/matriculas/:id', async (req, res) => {
+    const result = await db.consultRegistration(req.params.id);
+    res.json(result);
+})
+
 app.get('/materias', async (req, res) => {
     const result = await db.getSubjects();
     res.json(result);
