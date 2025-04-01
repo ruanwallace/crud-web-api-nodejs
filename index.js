@@ -23,6 +23,11 @@ app.get('/professores/:id', async (req, res) => {
     res.json(result);
 })
 
+app.get('/materias/:id', async (req, res) => {
+    const result = await db.consultSubject(req.params.id);
+    res.json(result);
+})
+
 app.get('/materias', async (req, res) => {
     const result = await db.getSubjects();
     res.json(result);
