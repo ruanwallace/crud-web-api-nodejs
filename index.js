@@ -68,6 +68,11 @@ app.post('/matriculas', async (req, res) => {
     res.sendStatus(201);
 })
 
+app.patch('/alunos/:id', async (req, res) => {
+    await db.updateStudent(req.params.id, req.body);
+    res.sendStatus(200);
+})
+
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
 })

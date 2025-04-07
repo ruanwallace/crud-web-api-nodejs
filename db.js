@@ -64,4 +64,10 @@ const consultRegistration = async (id_registration) => {
     return res[0];
 }
 
-module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration, consultStudent, consultTeacher, consultSubject, consultRegistration };
+const updateStudent = async (id, student) => {
+    const sql = 'UPDATE alunos SET nome=?, idade=?, email=? WHERE id_aluno=?';
+    const values = [student.nome, student.idade, student.email, id];
+    await connection.query(sql, values);
+}
+
+module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration, consultStudent, consultTeacher, consultSubject, consultRegistration, updateStudent };
