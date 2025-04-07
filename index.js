@@ -73,6 +73,11 @@ app.patch('/alunos/:id', async (req, res) => {
     res.sendStatus(200);
 })
 
+app.patch('/professores/:id', async (req, res) => {
+    await db.updateTeacher(req.params.id, req.body);
+    res.sendStatus(200);
+})
+
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
 })

@@ -70,4 +70,8 @@ const updateStudent = async (id, student) => {
     await connection.query(sql, values);
 }
 
-module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration, consultStudent, consultTeacher, consultSubject, consultRegistration, updateStudent };
+const updateTeacher = async (id, teacher) => {
+    await connection.query('UPDATE professores SET nome=? WHERE id_professor=?', [teacher.nome, id]);
+}
+
+module.exports = { addStudent, addTeacher, addSubject, addRegistration, getStudents, getSubjects, getTeachers, getRegistration, consultStudent, consultTeacher, consultSubject, consultRegistration, updateStudent, updateTeacher };
