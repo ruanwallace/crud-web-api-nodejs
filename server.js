@@ -8,6 +8,8 @@ const app = express();
 app.use(express.json());
 
 app.post('/alunos', alunosController.addStudent);
+app.get('/alunos', alunosController.getAll);
+app.get('/alunos/:id', alunosController.getAluno);
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta: ${port}`);

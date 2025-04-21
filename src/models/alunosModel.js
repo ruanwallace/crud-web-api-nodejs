@@ -8,12 +8,35 @@ const create = async (aluno) => {
 
     try {
         const [result] = await connection.query(sql, values);
-        return result.insertId;
+        return { 
+            id: result.insertId,
+            ...aluno
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+const getAll = async () => {
+    try {
+        const [rows] = await connection.query('SELECT * FROM alunos');
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const getAluno = async (id_aluno) => {
+    try {
+        const [rows] = await connection.query('SELECT * FROM alunos WHERE id_aluno = ?', [id_aluno]);
+        return rows;
     } catch (error) {
         throw error;
     }
 }
 
 module.exports = {
-    create
+    create,
+    getAll,
+    getAluno
 }

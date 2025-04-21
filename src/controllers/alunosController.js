@@ -10,6 +10,28 @@ const addStudent = async (req, res) => {
     }
 }
 
+const getAll = async (req, res) => {
+    try {
+        const alunos = await AlunoModel.getAll();
+        res.status(200).json(alunos);
+    } catch (error) {
+        console.error('Erro ao tentar consultar a tabela alunos', error);
+        res.status(500).json({ error: 'Erro ao consultar a tabela alunos' });
+    }
+}
+
+const getAluno = async (req, res) => {
+    try {
+        const aluno = await AlunoModel.getAluno(req.params.id);
+        res.status(200).json(aluno);
+    } catch (error) {
+        console.error('Erro ao consultar um aluno específico', error);
+        res.status(500).json({ error: 'Erro ao consultar o aluno' })
+    }
+}
+
 module.exports = {
-    addStudent
+    addStudent,
+    getAll,
+    getAluno
 }
