@@ -48,9 +48,22 @@ const updateAluno = async (aluno, id_aluno) => {
     }
 }
 
+const deleteAluno = async (id_aluno) => {
+    const sql = 'DELETE FROM alunos WHERE id_aluno = ?';
+
+    try {
+        const aluno = await getAluno(id_aluno);
+        await connection.query(sql, [id_aluno]);
+        return aluno;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     create,
     getAll,
     getAluno,
-    updateAluno
+    updateAluno,
+    deleteAluno
 }

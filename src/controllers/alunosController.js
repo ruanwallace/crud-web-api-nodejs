@@ -40,9 +40,20 @@ const updateAluno = async (req, res) => {
     }
 }
 
+const deleteAluno = async (req, res) => {
+    try {
+        const aluno = await AlunoModel.deleteAluno(req.params.id);
+        res.status(200).json(aluno);
+    } catch (error) {
+        console.error('Erro ao deletar o aluno', error);
+        res.status(500).json({ error: 'Erro ao deletar o aluno' });
+    }
+}
+
 module.exports = {
     addStudent,
     getAll,
     getAluno,
-    updateAluno
+    updateAluno,
+    deleteAluno
 }
