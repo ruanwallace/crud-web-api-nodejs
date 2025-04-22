@@ -35,8 +35,22 @@ const getAluno = async (id_aluno) => {
     }
 }
 
+const updateAluno = async (aluno, id_aluno) => {
+    const values = attributes.map(attr => `${attr} = ?`).join(', ');
+    const sql = `UPDATE alunos SET ${values} WHERE id_aluno = ?`;
+    const params = [...attributes.map(attr => aluno[attr]), id_aluno];
+
+    try {
+        const [result] = await connection.query(sql, params);
+        return getAluno(id_aluno);
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     create,
     getAll,
-    getAluno
+    getAluno,
+    updateAluno
 }

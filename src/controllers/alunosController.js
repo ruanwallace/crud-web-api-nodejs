@@ -30,8 +30,19 @@ const getAluno = async (req, res) => {
     }
 }
 
+const updateAluno = async (req, res) => {
+    try {
+        const aluno = await AlunoModel.updateAluno(req.body, req.params.id);
+        res.status(200).json(aluno);
+    } catch (error) {
+        console.error('Erro em atualizar o aluno.', error);
+        res.status(500).json({ erro: 'Erro ao atualizar o aluno' });
+    }
+}
+
 module.exports = {
     addStudent,
     getAll,
-    getAluno
+    getAluno,
+    updateAluno
 }
